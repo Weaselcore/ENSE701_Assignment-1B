@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
         <ul className="header">
-          <li><NavLink exact to="/">Home</NavLink></li>
+          <li><NavLink exact="true" to="/">Home</NavLink></li>
           <li><NavLink to="/users">Users</NavLink></li>
         </ul>
 
