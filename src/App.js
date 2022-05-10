@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+// Styling - todo
+
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <ul className="header">
+          <li><NavLink exact="true" to="/">Home</NavLink></li>
+          <li><NavLink to="/users">Users</NavLink></li>
+        </ul>
+
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/users" element={<Users />}/>
+            <Route path="/*" element={<NotFoundPage/>} />
+          </Routes>
+        </div>
+    </Router>
   );
+}
+
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+
+function NotFoundPage() {
+  return <h2>Not Found</h2>
 }
 
 export default App;
