@@ -8,19 +8,23 @@ import {
   NavLink
 } from "react-router-dom";
 
+import SubmitForm from "./components/SubmitForm";
+
 function App() {
   return (
     <Router>
         <ul className="header">
           <li><NavLink exact="true" to="/">Home</NavLink></li>
           <li><NavLink to="/users">Users</NavLink></li>
+          <li><NavLink to="/submitarticle">Submit Article</NavLink></li>
         </ul>
 
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/users" element={<Users />}/>
-            <Route path="/*" element={<NotFoundPage/>} />
+            <Route path="/submitarticle" element={<SubmitForm/>}/>
+            <Route path="/*" element={<NotFoundPage/>}/>
           </Routes>
         </div>
     </Router>
