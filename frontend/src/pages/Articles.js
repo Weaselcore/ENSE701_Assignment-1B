@@ -14,4 +14,4 @@ function SubmitForm() {
   })
 };
 
-module.exports = SubmitForm
+export default SubmitForm;
