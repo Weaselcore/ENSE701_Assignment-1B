@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const ArticleSchema = new mongoose.Schema({
     last_processed_datetime: {
-        type: Date,
+        type: String,
         required: true
     },
     state: {
         type: String,
         required: true
     }, 
-        {
+    article_data: {
         title: {
                 type: String,
                 required: true
@@ -41,7 +41,7 @@ const ArticleSchema = new mongoose.Schema({
         published_date: {
             type: Date
         }
-    }
+    },
 });
 
 module.exports = Article = mongoose.model('article', ArticleSchema);

@@ -3,13 +3,16 @@ const express = require('express');
 const connectDB = require('./config/db');
 //var cors = require('cors');
 // routes
-const articles = require('./routes/api/articles');
+const articles = require('./routes/api/article')
+
 const app = express();
 
 connectDB();
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello world!'));
+
+app.use('/api/articles', articles);
 
 const port = process.env.PORT || 8082;
 

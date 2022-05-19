@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Load Article model
-const Article = require("./article.js");
+const Article = require("../../models/articleModel");
 router.get("/test", (req, res) => res.send("Article route testing!"));
 
 // @route GET api/articles
@@ -11,7 +11,7 @@ router.get("/test", (req, res) => res.send("Article route testing!"));
 router.post("/", (req, res) => {
   Article.create(req.body)
     .then((article) => res.json({ msg: "Article added successfully" }))
-    .catch((err) => res.status(400).json({ error: "Unable to add this book" }));
+    .catch((err) => res.status(400).json({ error: `Unable to add this book: ${err}`}));
 });
 
 // @route GET api/articles
