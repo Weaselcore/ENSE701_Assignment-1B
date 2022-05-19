@@ -8,17 +8,14 @@ const bodyParser = require('body-parser');
 const articles = require('./routes/api/article')
 
 const app = express();
-
 connectDB();
 
 // cors
 app.use(cors());
-app.use(express.json({ extended: false }));
+
 // Init Middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-app.use(express.json());
 
 app.use('/api/articles', articles);
 
