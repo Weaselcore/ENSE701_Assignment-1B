@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
-function SubmitForm({ addArcticle }) {
+function SubmitForm() {
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
   const [source, setSource] = useState();
@@ -12,9 +12,34 @@ function SubmitForm({ addArcticle }) {
   const [accessionNumber, setAccessionNumber] = useState();
 
   const handleSubmit = (e) => {
-    addArcticle([title, author, source, keyword, industryCode, doi, accessionNumber])
     e.preventDefault();
-  }
+
+    const data = {
+      title: title, 
+      author: author, 
+      source: source, 
+      keyword: keyword, 
+      industryCode: industryCode, 
+      doi: doi, 
+      accessionNumber: accessionNumber
+    };
+
+    axios
+    .post('http://localhost:8082/api/articles', data)
+    .then(() => {
+      setTitle("");
+      setAuthor("");
+      setSource("");
+      setKeyword("");
+      setIndustryCode("");
+      setDoi("");
+      setAccessionNumber("");
+      this.props.history.push('/');
+    })
+    .catch(err => {
+      console.log(`Error in CreateBook!: ${err}`);
+    })
+};
 
   return (
     <form onSubmit={e => { handleSubmit(e) }}>
