@@ -18,7 +18,6 @@ app.use(express.json({ extended: false }));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('Hello world!'));
 app.use(express.json());
 
 app.use('/api/articles', articles);
