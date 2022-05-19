@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const privilegeRoutes = ['/moderator/:id', '/analyst/:id', '/admin/:id'];
+
 // Load Article model
 const Article = require("../../models/articleModel");
 router.get("/test", (req, res) => res.send("Article route testing!"));
@@ -39,7 +41,7 @@ router.get("/:id", (req, res) => {
 // @route GET api/articles/:id
 // @description Update articles
 // @access Public
-router.put("/:id", (req, res) => {
+router.put(privilegeRoutes, (req, res) => {
   Article.findByIdAndUpdate(req.params.id, req.body)
     .then((article) => res.json({ msg: "Updated successfully" }))
     .catch((err) =>

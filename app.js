@@ -11,7 +11,8 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello world!'));
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 app.use('/api/articles', articles);
 
 const port = process.env.PORT || 8082;
