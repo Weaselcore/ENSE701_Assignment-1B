@@ -2,6 +2,8 @@ const express = require('express');
 const connectDB = require('./config/db');
 const path = require("path");
 var cors = require('cors');
+const bodyParser = require('body-parser');
+
 // routes
 const articles = require('./routes/api/article')
 
@@ -12,6 +14,9 @@ connectDB();
 // cors
 app.use(cors());
 app.use(express.json({ extended: false }));
+// Init Middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hello world!'));
 app.use(express.json());
