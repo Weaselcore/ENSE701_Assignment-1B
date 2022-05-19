@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import SubmitForm from "./components/SubmitForm";
+import Articles from "./pages/Articles";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <ul className="header">
           <li><NavLink exact="true" to="/">Home</NavLink></li>
           <li><NavLink to="/users">Users</NavLink></li>
+          <li><NavLink to="/articles">Articles</NavLink></li>
           <li><NavLink to="/submitarticle">Submit Article</NavLink></li>
         </ul>
 
@@ -23,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/users" element={<Users />}/>
+            <Route path="/articles" element={Articles}/>
             <Route path="/submitarticle" element={<SubmitForm/>}/>
             <Route path="/*" element={<NotFoundPage/>}/>
           </Routes>
