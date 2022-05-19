@@ -6,7 +6,11 @@ function SubmitForm() {
 
   const result = axios.get('http://localhost:8082/api/articles/');
 
-  <div>{ result }</div>
+  return (
+    <ul>
+        {result.map(e => (<li>{e}</li>))}
+    </ul>
+  );
 };
 
 export default SubmitForm;
