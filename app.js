@@ -1,13 +1,16 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const path = require("path");
-//var cors = require('cors');
+var cors = require('cors');
 // routes
 const articles = require('./routes/api/article')
 
 const app = express();
 
 connectDB();
+
+// cors
+app.use(cors());
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello world!'));
