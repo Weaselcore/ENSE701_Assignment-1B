@@ -28,8 +28,8 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./frontend/build", "index.html"));
 });
 
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static('_____'));
-// }
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('_____'));
+}
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
