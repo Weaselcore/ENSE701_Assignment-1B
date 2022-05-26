@@ -34,7 +34,7 @@ function SubmitForm() {
     if (searchTerm !== "" && typeof (articles) !== "undefined") {
       var list = [];
       articles.forEach((article) => {
-        if (article.article_data.method?.toLowerCase().includes(searchTerm.toLowerCase())) {
+        if (article.article_data.method.toLowerCase().includes(searchTerm.toLowerCase())) {
           list.push(article);
         }
       });
