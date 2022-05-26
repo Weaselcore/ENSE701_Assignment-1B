@@ -55,4 +55,5 @@ const ArticleSchema = new mongoose.Schema({
     }
 });
 
+// eslint-disable-next-line no-undef
 module.exports = Article = mongoose.model('article', ArticleSchema);
