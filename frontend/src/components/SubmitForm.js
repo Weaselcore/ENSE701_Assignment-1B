@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { set } from 'mongoose';
 
 function SubmitForm() {
   const [title, setTitle] = useState();
@@ -10,6 +11,8 @@ function SubmitForm() {
   const [industryCode, setIndustryCode] = useState();
   const [doi, setDoi] = useState();
   const [accessionNumber, setAccessionNumber] = useState();
+  const [se_method, setSeMethod] = useState();
+  const [claim, setClaim] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +24,9 @@ function SubmitForm() {
       keyword: keyword, 
       industryCode: industryCode, 
       doi: doi, 
-      accessionNumber: accessionNumber
+      accessionNumber: accessionNumber,
+      se_method: se_method,
+      claim: claim
     };
 
     axios
@@ -34,6 +39,7 @@ function SubmitForm() {
       setIndustryCode("");
       setDoi("");
       setAccessionNumber("");
+      setClaim("");
       this.props.history.push('/');
     })
     .catch(err => {
@@ -104,6 +110,24 @@ function SubmitForm() {
         type='text'
         value={accessionNumber}
         onChange={e => setAccessionNumber(e.target.value)}
+      />
+      <br />
+      <label>Claim:</label>
+      <br />
+      <input
+        name='claim'
+        type='text'
+        value={claim}
+        onChange={e => setClaim(e.target.value)}
+      />
+      <br />
+      <label>SE Method:</label>
+      <br />
+      <input
+        name='method'
+        type='text'
+        value={se_method}
+        onChange={e => setSeMethod(e.target.value)}
       />
       <br />
       <input
