@@ -5,10 +5,17 @@ const ArticleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    claim :{
+        type : String ,
+        required: true
+    }
+    ,
+    
     state: {
         type: String,
         required: true
     }, 
+    
     article_data: {
         title: {
                 type: String,
@@ -38,10 +45,14 @@ const ArticleSchema = new mongoose.Schema({
         accession_number: {
             type: String
         },
-        published_date: {
-            type: Date
+        
+        se_method: {
+            type: String 
+        },
+        rating :{
+            type :String
         }
-    },
+    }
 });
 
 module.exports = Article = mongoose.model('article', ArticleSchema);
