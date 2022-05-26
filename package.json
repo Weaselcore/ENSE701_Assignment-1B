@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && set \"CI=false\" && npm run build",
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "node app.js",
