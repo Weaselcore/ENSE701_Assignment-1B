@@ -15,7 +15,7 @@ function SubmitForm() {
 
   const getArticles = async () => {
     try {
-      await axios.get('http://localhost:8082/api/articles/').then(response => {
+      await axios.get('api/articles').then(response => {
         setArticles(response.data);
         console.log(response.data);
       });
