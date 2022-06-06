@@ -27,31 +27,26 @@ function SubmitForm() {
     };
   };
 
-  // This fetches the data on load.
+  // This fetches data on dropdown change.
   useEffect(() => {
-    getArticles()
-  }, [])
-
-    // This fetches data on dropdown change.
-    useEffect(() => {
-      if (dropdownSelect === "None") {
-        getArticles();
-      }
-      else if (dropdownSelect !== "") {
-        var list = [];
-        getArticles().then(articles.forEach((article) => {
-          if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
-            list.push(article);
-          }
-        }));
-        setArticles(list);
-      }
-    }, [dropdownSelect])
+    if (dropdownSelect === "None") {
+      getArticles();
+    }
+    else {
+      var list = [];
+      getArticles().then(articles.forEach((article) => {
+        if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
+          list.push(article);
+        }
+      }));
+      setArticles(list);
+    }
+  }, [dropdownSelect])
 
   return (
     <>
       <h1>Articles</h1>
-      <TestTypeDropDown onChange={handleDropdownChange}/>
+      <TestTypeDropDown onChange={handleDropdownChange} />
       {articles && <TableSetUp
         data={articles}
         columns={TableHeaderConfig}
