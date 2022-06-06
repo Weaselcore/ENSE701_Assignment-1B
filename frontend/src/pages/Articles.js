@@ -14,7 +14,7 @@ function SubmitForm() {
     console.log(`Selected ${event.target.value}`)
   }
 
-  const [articles, setArticles] = useState({});
+  const [articles, setArticles] = useState();
 
   const getArticles = async () => {
     try {
@@ -34,7 +34,7 @@ function SubmitForm() {
     }
     else if (dropdownSelect !== "") {
       var list = [];
-      getArticles().then(articles.forEach((article) => {
+      getArticles().then(articles?.forEach((article) => {
         if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
           list.push(article);
         }
