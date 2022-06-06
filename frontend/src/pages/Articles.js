@@ -16,32 +16,53 @@ function SubmitForm() {
 
   const [articles, setArticles] = useState();
 
-  const getArticles = async () => {
-    try {
-      await axios.get('api/articles').then(response => {
-        setArticles(response.data);
-        console.log(response.data);
+  async function getData() {
+    return axios({ //you need to return in your saveFormData scope also
+      method: 'get',
+      url: '/api/articles/',
+    })
+      .catch((error) => {
+        console.log(error);
+        return error
+      })
+      .then((response) => {
+        console.log(response);
+        return response.data;
       });
-    } catch (error) {
-      console.log("error", error)
-    };
   };
+
+  async function getArticles() {
+    return getData().then(response => {
+      console.log(response);
+      setArticles(response);
+      return response
+    });
+  }
+
+  const filterArticles = async (articlesRes) => {
+    var list = [];
+    articlesRes?.forEach((article) => {
+      if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
+        list.push(article);
+      }
+      console.log({ list })
+      setArticles(list);
+    });
+  };
+
+  useEffect(() => {
+    getArticles();
+  }, []);
 
   // This fetches data on dropdown change.
   useEffect(() => {
-    if (dropdownSelect === "None") {
-      getArticles();
+    console.log("Changing data")
+    getArticles().then((data) => {
+    if (dropdownSelect !== "" && dropdownSelect !== "None") {
+      filterArticles(data);
     }
-    else if (dropdownSelect !== "" && dropdownSelect !== "None") {
-      var list = [];
-      getArticles().then(articles?.forEach((article) => {
-        if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
-          list.push(article);
-          setArticles(list);
-        }
-      }));
-    }
-  }, [dropdownSelect])
+  });
+  }, [dropdownSelect]);
 
   return (
     <>
