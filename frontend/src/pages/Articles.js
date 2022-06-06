@@ -32,7 +32,7 @@ function SubmitForm() {
     if (dropdownSelect === "None") {
       getArticles();
     }
-    else {
+    else if (dropdownSelect !== "") {
       var list = [];
       getArticles().then(articles.forEach((article) => {
         if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
