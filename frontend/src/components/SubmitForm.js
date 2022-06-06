@@ -54,7 +54,7 @@ function SubmitForm() {
     };
 
     axios
-    .post('http://localhost:8082/api/articles', data)
+    .post('api/articles', data)
     .then(() => {
       setTitle("");
       setAuthor("");
@@ -67,7 +67,7 @@ function SubmitForm() {
       this.props.history.push('/');
     })
     .catch(err => {
-      console.log(`Error in CreateBook!: ${err}`);
+      console.log(`Error in Article JSON!: ${err}`);
     })
 };
 
