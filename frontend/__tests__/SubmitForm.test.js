@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
-// Needed for async calls in tests
+// Needed for async calls in tests even if flagged as unused.
+// eslint-disable-next-line no-unused-vars
 import regeneratorRuntime from "regenerator-runtime";
 
 class FileReaderMock {
