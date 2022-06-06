@@ -14,7 +14,7 @@ function SubmitForm() {
     console.log(`Selected ${event.target.value}`)
   }
 
-  const [articles, setArticles] = useState();
+  const [articles, setArticles] = useState({});
 
   const getArticles = async () => {
     try {
