@@ -34,16 +34,16 @@ function SubmitForm() {
 
     // This fetches data on dropdown change.
     useEffect(() => {
-      if (dropdownSelect !== "" && typeof (articles) !== "undefined") {
+      if (dropdownSelect !== "") {
         var list = [];
-        getArticles().then(articles => (articles.forEach((article) => {
+        getArticles().then(articles.forEach((article) => {
           if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
             list.push(article);
           }
-        })));
+        }));
         setArticles(list);
       }
-      if (dropdownSelect === "None") {
+      else if (dropdownSelect === "None") {
         getArticles();
       }
     }, [dropdownSelect])
