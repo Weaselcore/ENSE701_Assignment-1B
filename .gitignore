@@ -25,3 +25,4 @@ yarn-error.log*
 config/default.json
 /.env
 .env
+frontend/package-lock.json
