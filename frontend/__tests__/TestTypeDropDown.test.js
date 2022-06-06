@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import TestTypeDropDown from './components/TestTypeDropdown'
+import TestTypeDropDown from '../src/components/TestTypeDropdown'
 import userEvent from '@testing-library/user-event'
 import {render, screen} from '@testing-library/react'
 
