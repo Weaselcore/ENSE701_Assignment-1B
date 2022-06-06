@@ -35,6 +35,7 @@ function SubmitForm() {
     // This fetches data on dropdown change.
     useEffect(() => {
       if (dropdownSelect !== "" && typeof (articles) !== "undefined") {
+        getArticles();
         var list = [];
         articles.forEach((article) => {
           if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
