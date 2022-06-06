@@ -37,7 +37,7 @@ function SubmitForm() {
       if (dropdownSelect !== "" && typeof (articles) !== "undefined") {
         var list = [];
         articles.forEach((article) => {
-          if (article.article_data.method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
+          if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
             list.push(article);
           }
         });
