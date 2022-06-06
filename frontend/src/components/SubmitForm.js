@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import TestTypeDropDown from './TestTypeDropdown';
+const bibtexParse = require('bibtex-parse');
 
 function SubmitForm() {
   const [title, setTitle] = useState();
@@ -12,7 +13,30 @@ function SubmitForm() {
   const [doi, setDoi] = useState();
   const [accessionNumber, setAccessionNumber] = useState();
   const [se_method, setSeMethod] = useState();
+  const [year, setYear] = useState();
   const [claim, setClaim] = useState();
+  let fileReader;
+
+  const handleFile = (file) => {
+    if (file) {
+      fileReader = new FileReader();
+      fileReader.onloadend = handleFileRead;
+      fileReader.readAsText(file);
+    }
+  };
+
+  const handleFileRead = () => {
+    const content = fileReader.result;
+    const parsedData = bibtexParse.entries(content);
+
+    //Set data from file.
+    setTitle(parsedData[0]["TITLE"]);
+    setAuthor(parsedData[0]["AUTHOR"]);
+    setSource(parsedData[0]["SOURCE"] || parsedData[0]["URL"]);
+    setYear(parsedData[0]["YEAR"]);
+    setKeyword(parsedData[0]["KEYWORDS"]);
+    setDoi(parsedData[0]["DOI"]);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,6 +139,15 @@ function SubmitForm() {
         onChange={e => setAccessionNumber(e.target.value)}
       />
       <br />
+      <label>Year of Publication:</label>
+      <br />
+      <input
+        name='year'
+        type='text'
+        value={year}
+        onChange={e => setYear(e.target.value)}
+      />
+      <br />
       <label>Claim:</label>
       <br />
       <input
@@ -126,6 +159,11 @@ function SubmitForm() {
       />
       <TestTypeDropDown onChange={e => setSeMethod(e.target.value)}/>
       <br />
+      <input
+        type="file"
+        accept=".bib"
+        onChange={(e) => handleFile(e.target.files[0])}
+      />
       <input
         type='submit'
         value='Submit Article'
