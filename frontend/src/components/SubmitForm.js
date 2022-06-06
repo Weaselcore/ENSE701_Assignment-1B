@@ -43,18 +43,18 @@ function SubmitForm() {
 
     const data = {
       title: title, 
-      author: author, 
+      authors: author, 
       source: source, 
-      keyword: keyword, 
-      industryCode: industryCode, 
+      keywords: keyword, 
+      industry_codes: industryCode, 
       doi: doi, 
-      accessionNumber: accessionNumber,
+      accession_number: accessionNumber,
       se_method: se_method,
       claim: claim
     };
 
     axios
-    .post('api/articles', data)
+    .post('api/articles', {article_data: data})
     .then(() => {
       setTitle("");
       setAuthor("");
