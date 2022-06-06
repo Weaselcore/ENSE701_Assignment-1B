@@ -50,7 +50,7 @@ const TableHeaderConfig =
     }
     ,{
       Header: 'Claim',
-      accessor: 'claim',
+      accessor: 'article_data.claim',
       Filter: false
       // Filter: Dropdown,
     },

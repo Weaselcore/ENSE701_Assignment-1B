@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 
-const ArticleSchema = new mongoose.Schema({
-    last_processed_datetime: {
-        type: String,
-        required: true
-    },
-    claim :{
-        type : String ,
-        required: true
-    }
-    ,
-    
-    state: {
-        type: String,
-        required: true
-    }, 
-    
+const ArticleSchema = new mongoose.Schema({    
     article_data: {
         title: {
                 type: String,
@@ -51,6 +36,10 @@ const ArticleSchema = new mongoose.Schema({
         },
         rating :{
             type :String
+        },
+        claim :{
+            type : String ,
+            required: true
         }
     }
 });
