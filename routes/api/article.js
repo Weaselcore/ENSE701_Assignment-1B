@@ -12,7 +12,7 @@ router.get("/test", (req, res) => res.send("Article route testing!"));
 // @access Public
 router.post("/", (req, res) => {
   Article.create(req.body)
-    .then((article) => res.json({ msg: "Article added successfully" }))
+    .then((article) => res.json({ msg: `Article added successfully - ${article}` }))
     .catch((err) => res.status(400).json({ error: `Unable to add this book: ${err}`}));
 });
 
