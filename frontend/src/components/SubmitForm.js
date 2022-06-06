@@ -64,7 +64,6 @@ function SubmitForm() {
       setDoi("");
       setAccessionNumber("");
       setClaim("");
-      this.props.history.push('/');
     })
     .catch(err => {
       console.log(`Error in Article JSON!: ${err}`);
