@@ -56,6 +56,7 @@ function SubmitForm() {
         type='text'
         value={title}
         onChange={e => setTitle(e.target.value)}
+        required
       />
       <br />
       <label>Authors:</label>
@@ -65,6 +66,7 @@ function SubmitForm() {
         type='text'
         value={author}
         onChange={e => setAuthor(e.target.value)}
+        required
       />
       <br />
       <label>Source:</label>
@@ -74,6 +76,7 @@ function SubmitForm() {
         type='text'
         value={source}
         onChange={e => setSource(e.target.value)}
+        required
       />
       <br />
       <label>Keywords:</label>
@@ -119,6 +122,7 @@ function SubmitForm() {
         type='text'
         value={claim}
         onChange={e => setClaim(e.target.value)}
+        required
       />
       <TestTypeDropDown onChange={e => setSeMethod(e.target.value)}/>
       <br />
