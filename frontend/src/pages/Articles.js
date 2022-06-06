@@ -34,7 +34,10 @@ function SubmitForm() {
 
     // This fetches data on dropdown change.
     useEffect(() => {
-      if (dropdownSelect !== "") {
+      if (dropdownSelect === "None") {
+        getArticles();
+      }
+      else if (dropdownSelect !== "") {
         var list = [];
         getArticles().then(articles.forEach((article) => {
           if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
@@ -42,9 +45,6 @@ function SubmitForm() {
           }
         }));
         setArticles(list);
-      }
-      else if (dropdownSelect === "None") {
-        getArticles();
       }
     }, [dropdownSelect])
 
