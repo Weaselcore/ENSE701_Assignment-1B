@@ -32,14 +32,14 @@ function SubmitForm() {
     if (dropdownSelect === "None") {
       getArticles();
     }
-    else if (dropdownSelect !== "") {
+    else if (dropdownSelect !== "" && dropdownSelect !== "None") {
       var list = [];
       getArticles().then(articles?.forEach((article) => {
         if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
           list.push(article);
+          setArticles(list);
         }
       }));
-      setArticles(list);
     }
   }, [dropdownSelect])
 
