@@ -36,11 +36,11 @@ function SubmitForm() {
     useEffect(() => {
       if (dropdownSelect !== "" && typeof (articles) !== "undefined") {
         var list = [];
-        getArticles().then(articles.forEach((article) => {
+        getArticles().then(articles => (articles.forEach((article) => {
           if (article.article_data.se_method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
             list.push(article);
           }
-        }));
+        })));
         setArticles(list);
       }
       if (dropdownSelect === "None") {
