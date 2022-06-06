@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import TestTypeDropDown from './TestTypeDropdown';
 
 function SubmitForm() {
   const [title, setTitle] = useState();
@@ -119,15 +120,7 @@ function SubmitForm() {
         value={claim}
         onChange={e => setClaim(e.target.value)}
       />
-      <br />
-      <label>SE Method:</label>
-      <br />
-      <input
-        name='method'
-        type='text'
-        value={se_method}
-        onChange={e => setSeMethod(e.target.value)}
-      />
+      <TestTypeDropDown onChange={e => setSeMethod(e.target.value)}/>
       <br />
       <input
         type='submit'
