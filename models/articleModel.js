@@ -1,44 +1,48 @@
 const mongoose = require('mongoose');
 
-const ArticleSchema = new mongoose.Schema({    
+const ArticleSchema = new mongoose.Schema({
     article_data: {
         title: {
-                type: String,
-                required: true
-                },
+            type: String,
+            required: true
+        },
         authors: {
-                type: [String],
-                required: true
-                },
+            type: [String],
+            required: true
+        },
         issn: {
-                type: Number,
-                },
-        keywords:{
+            type: Number,
+        },
+        keywords: {
             type: [String]
-            }
+        }
         ,
-        source:{
+        source: {
             type: String
-            }
-                ,
-        industry_codes:{
+        }
+        ,
+        year: {
+            type: Number
+        }
+        ,
+        industry_codes: {
             type: String
-                },
+        },
         doi: {
             type: String
         },
         accession_number: {
             type: String
         },
-        
+
         se_method: {
-            type: String 
+            type: String
         },
-        rating :{
-            type :String
+        rating: {
+            type: String
         },
-        claim :{
-            type : String ,
+        claim: {
+            type: String,
             required: true
         }
     }
