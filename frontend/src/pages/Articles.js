@@ -3,12 +3,15 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import TableHeaderConfig from "../components/TableHeaderConfig.js";
 import TableSetUp from "../components/TableSetUp.js";
+import TestTypeDropDown from '../components/TestTypeDropdown.js';
 
 function SubmitForm() {
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleChange = event => {
-    setSearchTerm(event.target.value.toLowerCase());
+  const [dropdownSelect, setDropdownSelect] = useState("");
+
+  const handleDropdownChange = event => {
+    setDropdownSelect(event.target.value);
+    console.log(`Selected ${event.target.value}`)
   }
 
   const [articles, setArticles] = useState();
@@ -29,31 +32,26 @@ function SubmitForm() {
     getArticles()
   }, [])
 
-  // This fetches data on search.
-  useEffect(() => {
-    if (searchTerm !== "" && typeof (articles) !== "undefined") {
-      var list = [];
-      articles.forEach((article) => {
-        if (article.article_data.method?.toLowerCase().includes(searchTerm.toLowerCase())) {
-          list.push(article);
-        }
-      });
-      setArticles(list);
-    }
-    if (searchTerm === "") {
-      getArticles();
-    }
-  }, [searchTerm])
+    // This fetches data on dropdown change.
+    useEffect(() => {
+      if (dropdownSelect !== "" && typeof (articles) !== "undefined") {
+        var list = [];
+        articles.forEach((article) => {
+          if (article.article_data.method?.toLowerCase().includes(dropdownSelect.toLowerCase())) {
+            list.push(article);
+          }
+        });
+        setArticles(list);
+      }
+      if (dropdownSelect === "None") {
+        getArticles();
+      }
+    }, [dropdownSelect])
 
   return (
     <>
       <h1>Articles</h1>
-      <input
-        type="text"
-        placeholder="Search Method"
-        value={searchTerm}
-        onChange={handleChange}
-      />
+      <TestTypeDropDown onChange={handleDropdownChange}/>
       {articles && <TableSetUp
         data={articles}
         columns={TableHeaderConfig}
