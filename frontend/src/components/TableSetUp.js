@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTable, useSortBy, usePagination, useFilters } from 'react-table';
 
 const TableSetUp = ({ columns, data }) => {
