@@ -43,8 +43,8 @@ const TableHeaderConfig =
       // disableSortBy: true
     }
     , {
-      Header: 'Publish Date',
-      accessor: 'article_data.publish_date',
+      Header: 'Publish Year',
+      accessor: 'article_data.year',
       Filter: false
       // Filter: Dropdown,
     }

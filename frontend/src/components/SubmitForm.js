@@ -50,7 +50,8 @@ function SubmitForm() {
       doi: doi, 
       accession_number: accessionNumber,
       se_method: se_method,
-      claim: claim
+      claim: claim,
+      year: year
     };
 
     axios
